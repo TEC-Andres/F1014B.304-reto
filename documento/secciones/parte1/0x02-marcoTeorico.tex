@@ -1,0 +1,63 @@
+\inicializarSeccion{Marco Teórico}
+
+\inicializarSubseccion{Frenado magnetico}
+
+\tab El frenado magnético en una torre (góndola) de caída libre está relacionado con distintos principios del electromagnetismo. Los conceptos más importantes serán las leyes de Faraday, Lenz y Biot-Savart además de las corrientes de Eddy; estas ayudan a describir cómo es que se comporta un campo magnético junto a las fuerzas que se crean durante el proceso de frenado.
+
+El frenado magnético ayuda a crear un sistema de frenado para disminuir la velocidad de un objeto usando campos magnéticos que permiten que el frenado se realice sin contacto físico. Gracias a la implementación de este método de frenado, se puede reducir el desgaste de los materiales y se puede crear un frenado más suave con la góndola.
+
+\inicializarSubseccion{Ley de las corrientes de Eddy}
+
+\tab Las corrientes de Eddy son corrientes eléctricas inducidas en los materiales conductores cuando atraviesan un campo magnético variable. En nuestro caso, cuando la góndola cae genera corrientes inducidas, las cuales generan un campo magnético que produce una fuerza de frenado con la cual la velocidad irá disminuyendo gradualmente.
+
+\inicializarSubseccion{Ley de Faraday}
+
+\tab La ley de Faraday propone un cambio en el flujo magnético producido por una fuerza electromotriz. Con esta ley podemos entender cómo es que se crean las corrientes inducidas en una góndola en movimiento dentro de un campo magnético.
+La fórmula que se utiliza es la siguiente:
+
+\begin{equation}
+    \varepsilon = -\frac{d\Phi_B}{dt}
+\end{equation}
+
+Donde $\varepsilon$ es la fuerza inducida y $\Phi_B$ es el flujo magnético.
+
+\inicializarSubseccion{Ley de Lenz}
+
+\tab La ley de Lenz nos habla de que un campo magnético generado por una corriente inducida se opondrá a la fuerza que la creó. Gracias a ello se genera la fuerza que desacelera la góndola en la torre.
+
+\inicializarSubseccion{Ley de Biot-Savart}
+
+\tab La ley de Biot-Savart nos ayuda a calcular el campo magnético que se genera por medio de una corriente eléctrica. Para poder hacer el cálculo utilizamos la siguiente fórmula:
+
+\begin{equation}
+    \vec{B} = \frac{\mu_0}{4\pi} \int \frac{I d\vec{l} \times \hat{r}}{r^2}
+\end{equation}
+
+$I$ representa la corriente eléctrica, $r$ es la distancia, $\mu_0$ es la permeabilidad y $d\vec{l}$ es el diferencial. Esta ley facilita el modelado en MATLAB de nuestro proyecto.
+
+\inicializarSubseccion{Campo magnetico}
+
+\tab El campo magnético en una línea de corriente ocurre cuando circula una corriente eléctrica por un conductor recto, eso crea un campo alrededor del conductor junto a una magnitud del mismo campo. Esto lo podemos calcular por medio de la siguiente fórmula:
+
+\begin{equation}
+    B = \frac{\mu_0 I}{2\pi r}
+\end{equation}
+
+Donde $B$ es el campo magnético, $I$ es la corriente eléctrica y $r$ es la distancia que existe hacia el conductor.
+
+Con el resultado que se obtiene podemos observar que el campo disminuye conforme la distancia al conductor se hace más grande.
+
+\inicializarSubseccion{Espira circular}
+
+\tab También tenemos el campo magnético en una espira circular, el cual es un conductor que tiene forma de una circunferencia la cual tiene una corriente eléctrica. Debido a sus características, se genera un campo magnético que se concentra en el centro de esta espira.
+Para poder calcular este campo magnético utilizamos la siguiente fórmula:
+
+\begin{equation}
+    B = \frac{\mu_0 I}{2R}
+\end{equation}
+
+Donde $B$ es el campo magnético, $I$ la corriente eléctrica, $R$ es el radio que tiene la espira.
+
+\inicializarSubseccion{Simulación de MATLAB}
+
+\tab Gracias a estos conceptos podemos entender cómo es que funciona el frenado magnético de una góndola, con esto somos capaces de generar un modelo por medio de MATLAB donde mostramos el funcionamiento de estas leyes aplicadas en nuestra góndola.

@@ -1,0 +1,24 @@
+\documentclass{article}
+% biblatex configured in librerias/lib.tex
+\usepackage[utf8]{inputenc}
+\input{librerias/lib}
+\input{librerias/comandos}
+\input{librerias/estilos}
+\addbibresource{../references.bib}
+
+\begin{document}
+\vspace*{1.5cm}
+\input{secciones/documento/portada}
+\newpage
+\input{secciones/documento/indice}
+\newpage
+\input{secciones/parte1/0x01-introduccion}
+\input{secciones/parte1/0x02-marcoTeorico}
+\input{secciones/parte1/0x03-simulacionEnMATLAB}
+\newpage
+\input{secciones/parte1/0x04-descripcionDeResp}
+
+\nocite{*}
+\printbibliography
+
+\end{document}
