@@ -1,0 +1,80 @@
+%% Creator: Inkscape 1.4.2 (f4327f4, 2025-05-13), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'diagramaDeFlujo_svg-tex.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{239.25bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,3.89028213)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{diagramaDeFlujo_svg-tex.pdf}}%
+    \put(0.45611285,3.78213166){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Inicio\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{diagramaDeFlujo_svg-tex.pdf}}%
+    \put(0.45611285,3.53134796){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Definición de variab...\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{diagramaDeFlujo_svg-tex.pdf}}%
+    \put(0.45611285,3.31191223){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Definición del espac...\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{diagramaDeFlujo_svg-tex.pdf}}%
+    \put(0.45611285,3.02978056){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Obtener el campo con su magnitud $$...\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{diagramaDeFlujo_svg-tex.pdf}}%
+    \put(0.45611285,2.44984326){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Parametrización del vector...\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{diagramaDeFlujo_svg-tex.pdf}}%
+    \put(0.97648903,1.44984326){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}No\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{diagramaDeFlujo_svg-tex.pdf}}%
+    \put(0.45924765,1.02351097){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}¿Se han sumado todos los elementos?\end{tabular}}}}%
+    \put(0.45611285,0.93887147){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Si\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{diagramaDeFlujo_svg-tex.pdf}}%
+    \put(0.45611285,1.48746082){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Aplicación de la ley Biot-...\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{diagramaDeFlujo_svg-tex.pdf}}%
+    \put(0.45611285,0.69435737){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Suma total de todos los c...\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{diagramaDeFlujo_svg-tex.pdf}}%
+    \put(0.45611285,0.38087774){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Gráficar\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{diagramaDeFlujo_svg-tex.pdf}}%
+    \put(0.45611285,0.0830721){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Fin\end{tabular}}}}%
+  \end{picture}%
+\endgroup%

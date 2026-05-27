@@ -1,0 +1,57 @@
+\inicializarSeccion{Simulación en MATLAB}
+
+\inicializarSubseccion{Descripción de la simulación}
+\tab La simulación que producimos en el desarrollo de esta etapa fue el gráfico que produce una linea de corriente eléctrica y una espira de corriente utilizando la ley de Biot-Savart; apoyandonos de resultados clásicos que salen de la ley de Ampere. Para esto, se decidio realizar la simulación en $\mathbb{R^3}$ para tener una mejor noción acerca de como se comporta el campo para la realización correcta de la simulación de la torre de caída libre. 
+
+\inicializarSubseccion{Metología}
+\tab Antes de iniciar con la planeación del código, se realizo un diagrama de flujo para tener una mejor planeación de la simulación. Dicho diagrama de flujo se muestra en la \ref{fig:diagramaDeFlujo}, figura que se mostrará a continuación:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{\nat{parte1/diagramaDeFlujo.png}}
+    \caption{Diagrama de flujo de la simulación.}
+    \label{fig:diagramaDeFlujo}
+\end{figure}
+
+\tab Para la simulación se decidió utilizar la función \texttt{quiver3} de MATLAB, la cual nos ayuda a graficar campos vectoriales en $\mathbb{R}^3$, esto con el objetivo de poder visualizar el campo magnético que se genera por medio de una corriente eléctrica. Para esto, se utilizó la ley de Biot-Savart para calcular el campo magnético generado por una linea de corriente y por una espira circular.
+
+\inicializarSubseccion{Herramientas tecnicas}
+\tab Como se pudo observar en el diagrama de flujo, se utilizó muchisimos conceptos físicos para la realización del simulador. Por mencionar algunos, tenemos la ley de Biot-Savart, la ley de Ampere, las corrientes de Eddy, la parametrización de la espira circular, entre otros. Sin embargo, para la realización del código en general, se necesitaron funciones especiales como \texttt{quiver3} para poder colocar las flechas que representan el campo magnético. También se utilizó la función \texttt{linspace} para generar los puntos en los cuales se va a evaluar el campo magnético. Se utilizó la función \texttt{meshgrid} para generar una malla de puntos en $\mathbb{R}^3$ para poder graficar el campo magnético en todo el espacio. Por último, se utilizó el método \texttt{reshape} para poder acotar las matrices que se generan por medio de la ley de Biot-Savart y poder graficar el campo magnético de una manera más clara. Utilizando estas herramientas técnicas, se logró generar una simulación que muestra el campo magnético generado por una linea de corriente y por una espira circular, lo cual nos ayuda a entender mejor el comportamiento del campo magnético en la torre de caída libre.
+
+
+\inicializarSeccion{Resultados}
+\tab En esta sección se muestran los resultados obtenidos por medio de la simulación. La \autoref{fig:inicial} y \autoref{fig:vistaTransversal} muestran la simulación del campo generado por una linea de corriente y por una espira circular.
+
+\begin{figure}[H]
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includesvg[width=1\textwidth, inkscapelatex=false]{\nat{parte1/inicial.svg}}
+        \caption{Diagrama de flujo de la simulación.}
+        \label{fig:inicial}
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includesvg[width=1\textwidth, inkscapelatex=false]{\nat{parte1/vistaTransversal.svg}}
+        \caption{Vista transversal de la simulación.}
+        \label{fig:vistaTransversal}
+    \end{minipage}
+\end{figure}
+
+\tab En las \autoref{fig:vistaxy} y \autoref{fig:curvasDeNivel} se muestran la vista en el plano $xy$ de la simulación y las curvas de nivel del campo magnético respectivamente..
+
+\begin{figure}[H]
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includesvg[width=1\textwidth, inkscapelatex=false]{\nat{parte1/vistaxy.svg}}
+        \caption{Vista en el plano XY de la simulación.}
+        \label{fig:vistaxy}
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includesvg[width=1\textwidth, inkscapelatex=false]{\nat{parte1/curvasDeNivel.svg}}
+        \caption{Curvas de nivel en el plano $xy$ para el campo magnético.}
+        \label{fig:curvasDeNivel}
+    \end{minipage}
+\end{figure}
+
+Estos resultados son precisamente los esperados para la simulación; imitando el resultado experimental que se obtiene por medio de la ley de Ampere. Con esta base, tenemos las herramientas necesarias para poder realizar la simulación de la torre de caída libre con frenado magnético, lo cual se realizará en la siguiente etapa del proyecto.
