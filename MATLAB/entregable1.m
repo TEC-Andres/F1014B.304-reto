@@ -8,8 +8,12 @@
 
 
 %% Biot Savart
-% Colores
-COLOR_BG = [0.1294 0.1294 0.1294];
+COLOR_BG = [1 1 1];           % fondo blanco
+COLOR_AXES = [0 0 0];         % ejes negra
+COLOR_ESPIRA = [0 0 0];       % espira negra
+COLOR_LINEA = [0 0 0];        % línea central negra
+COLOR_ORIGEN = [1 1 1];       % origen blanco
+COLOR_FLECHAS = [0 0 1];      % color de flechas
 
 % Constantes
 mu_cero = 4*pi*1e-7;  % Permeatividad del vacio
@@ -100,20 +104,23 @@ V_sub = By_3D(1:sub:end, 1:sub:end, z_medio);
 W_sub = Bz_3D(1:sub:end, 1:sub:end, z_medio);
 
 % Graficar
-quiver3(X_sub, Y_sub, Z_sub, U_sub, V_sub, W_sub, 1.5);
+hq = quiver3(X_sub, Y_sub, Z_sub, U_sub, V_sub, W_sub, 1.5, 'Color', COLOR_FLECHAS);
 hold on;
 
 % Dibujar espira y la línea central
-plot3(R*cos(ang), R*sin(ang), zeros(size(ang)), 'r-', 'LineWidth', 1.5); % Espira asimptota
-plot3([0 0], [0 0], [zmin zmax], 'w-', 'LineWidth', 5);                  % Linea vertical
-plot3(0, 0, 0, 'ko', 'MarkerFaceColor', 'k');                            % Punto marcando el origen
+ang = linspace(0,2*pi,200);
+
+plot3(R*cos(ang), R*sin(ang), zeros(size(ang)), 'Color', COLOR_ESPIRA, 'LineWidth', 1.5); % Espira
+plot3([0 0], [0 0], [-0.3 0.3], 'Color', COLOR_LINEA, 'LineWidth', 2);                  % Linea vertical
+plot3(0, 0, 0, 'o', 'MarkerEdgeColor', COLOR_ORIGEN, 'MarkerFaceColor', COLOR_ORIGEN);    % Punto marcando el origen
 
 hold off;
 axis equal;
-xlabel('x (m)'); ylabel('y (m)'); zlabel('z (m)');
-title('Campo magnético (vista 3D, plano central)');
+xlabel('x (m)', 'Color', COLOR_AXES); ylabel('y (m)', 'Color', COLOR_AXES); zlabel('z (m)', 'Color', COLOR_AXES);
+title('Campo magnético (vista 3D, plano central)', 'Color', COLOR_AXES);
 view(3);
 grid on;
+set(gca, 'XColor', COLOR_AXES, 'YColor', COLOR_AXES, 'ZColor', COLOR_AXES, 'Color', COLOR_BG);
 
 %% Curva de nivel en el eje Z
 % Seleccionar plano z central ya usado en la gráfica 3D
@@ -127,21 +134,21 @@ hold on;
 niveles = linspace(min(magnitudDeBEnElPlanoZ(:)), max(magnitudDeBEnElPlanoZ(:)), 15);
 contourf(X_sub, Y_sub, magnitudDeBEnElPlanoZ(1:sub:end,1:sub:end), niveles, 'LineColor','none');
 colormap(parula);
-colorbar;
+colorbar('Color', COLOR_AXES);
 
 % Superponer líneas de contorno.
-contour(X_sub, Y_sub, magnitudDeBEnElPlanoZ(1:sub:end,1:sub:end), 8, 'LineColor', 'k');
+contour(X_sub, Y_sub, magnitudDeBEnElPlanoZ(1:sub:end,1:sub:end), 8, 'LineColor', COLOR_AXES);
 
 % Dibujar la espira y la línea central proyectadas en el plano
 ang = linspace(0,2*pi,200);
-plot(R*cos(ang), R*sin(ang), 'r-', 'LineWidth', 1.5);
-plot(0,0,'ko','MarkerFaceColor','k');
+plot(R*cos(ang), R*sin(ang), 'Color', COLOR_ESPIRA, 'LineWidth', 1.5);
+plot(0,0,'o','MarkerEdgeColor', COLOR_ORIGEN, 'MarkerFaceColor', COLOR_ORIGEN);
 
 axis equal;
 xlim([-limites_xy limites_xy]);
 ylim([-limites_xy limites_xy]);
-xlabel('x (m)'); ylabel('y (m)');
-title('Curvas de nivel de |B| en el plano z = 0');
-set(gca,'Color',COLOR_BG,'XColor','w','YColor','w');
+xlabel('x (m)', 'Color', COLOR_AXES); ylabel('y (m)', 'Color', COLOR_AXES);
+title('Curvas de nivel de |B| en el plano z = 0', 'Color', COLOR_AXES);
+set(gca,'Color',COLOR_BG,'XColor',COLOR_AXES,'YColor',COLOR_AXES);
 
 hold off;
