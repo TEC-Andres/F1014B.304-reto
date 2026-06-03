@@ -3,7 +3,7 @@
 \inicializarSubseccion{Descripción de la simulación}
 \tab La simulación que producimos en el desarrollo de esta etapa fue el gráfico que produce una linea de corriente eléctrica y una espira de corriente utilizando la ley de Biot-Savart; apoyandonos de resultados clásicos que salen de la ley de Ampere. Para esto, se decidio realizar la simulación en $\mathbb{R^3}$ para tener una mejor noción acerca de como se comporta el campo para la realización correcta de la simulación de la torre de caída libre. 
 
-\inicializarSubseccion{Metología}
+\inicializarSubseccion{Metodología}
 \tab Antes de iniciar con la planeación del código, se realizo un diagrama de flujo para tener una mejor planeación de la simulación. Dicho diagrama de flujo se muestra en la \ref{fig:diagramaDeFlujo}, figura que se mostrará a continuación:
 
 \begin{figure}[H]
@@ -15,7 +15,7 @@
 
 \tab Para la simulación se decidió utilizar la función \texttt{quiver3} de MATLAB, la cual nos ayuda a graficar campos vectoriales en $\mathbb{R}^3$, esto con el objetivo de poder visualizar el campo magnético que se genera por medio de una corriente eléctrica. Para esto, se utilizó la ley de Biot-Savart para calcular el campo magnético generado por una linea de corriente y por una espira circular.
 
-\inicializarSubseccion{Herramientas tecnicas}
+\inicializarSubseccion{Herramientas técnicas}
 \tab Como se pudo observar en el diagrama de flujo, se utilizó muchisimos conceptos físicos para la realización del simulador. Por mencionar algunos, tenemos la ley de Biot-Savart, la ley de Ampere, las corrientes de Eddy, la parametrización de la espira circular, entre otros. Sin embargo, para la realización del código en general, se necesitaron funciones especiales como \texttt{quiver3} para poder colocar las flechas que representan el campo magnético. También se utilizó la función \texttt{linspace} para generar los puntos en los cuales se va a evaluar el campo magnético. Se utilizó la función \texttt{meshgrid} para generar una malla de puntos en $\mathbb{R}^3$ para poder graficar el campo magnético en todo el espacio. Por último, se utilizó el método \texttt{reshape} para poder acotar las matrices que se generan por medio de la ley de Biot-Savart y poder graficar el campo magnético de una manera más clara. Utilizando estas herramientas técnicas, se logró generar una simulación que muestra el campo magnético generado por una linea de corriente y por una espira circular, lo cual nos ayuda a entender mejor el comportamiento del campo magnético en la torre de caída libre.
 
 
@@ -59,7 +59,7 @@ Estos resultados son precisamente los esperados para la simulación; imitando el
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{\nat{parte2/diagramaRetoII.png}}
-    \caption{Diagrama de flujo de la simulación de la góndrola.}
+    \caption{Diagrama de flujo de la simulación de la góndola.}
     \label{fig:diagramaDeFlujoII}
 \end{figure}
 
@@ -103,4 +103,6 @@ Con base a este modelo, podemos ver que la góndola experimenta una fuerza de fr
     \label{fig:z_vs_time}
 \end{figure}
 
-Con estos resultados, podemos ver que la góndola cae de manera más lenta debido a la fuerza de frenado magnético, lo que demuestra el funcionamiento del sistema de frenado magnético. Además, podemos ver que la fuerza de frenado magnético aumenta a medida que la góndola se acerca al imán, lo que hace que la góndola caiga aún más lentamente. Este modelo es lo suficiente avanzado como para determinar si es seguro o no el sistema del frenado magnético, ya que nos permite simular el comportamiento de la góndola en diferentes condiciones y ver cómo se comporta el sistema de frenado magnético en cada caso. 
+Con estos resultados, podemos ver que la góndola cae de manera más lenta debido a la fuerza de frenado magnético, lo que demuestra el funcionamiento del sistema de frenado magnético. Además, podemos ver que la fuerza de frenado magnético aumenta a medida que la góndola se acerca al imán, lo que hace que la góndola caiga aún más lentamente. 
+
+\tab Contestando algunas preguntas básicas acerca del comportamiento de la góndola. El juego mecanico tiene una velocidad terminal cuando este llega cayendo siete metros. Ya que a esta altura, empieza a afectar la fuerza del frenado magnetico; desacelerando la caída de la góndola. Para que esta velocidad terminal ocurra, solo tenemos que no acceder a la fuerza de frenado magnético, lo cual se puede lograr con un imán más pequeño. Lo que sucede y vimos en nuestra simulación fue que en el momento en el que la góndola cruza el anillo. El campo magnético cambia de dirección. Esto en casos en donde el dipolo magnético es muy fuerte puede llegar a que la góndola se quede atrapada en el anillo, lo cuál, evidentemente, es algo que queremos evitar. Con la fuerza predeterminada que se tiene, la góndola no se queda atrapada en el anillo, pero si se ve afectada por el cambio de dirección del campo magnético, lo que hace que la góndola caiga de manera más lenta.
