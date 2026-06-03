@@ -1,7 +1,6 @@
-%% nodoDeFuerza.m
+%% nodoDePeso.m
 % Modelaje del modelo
-% F_w = mg
-classdef nodoDeFuerza < superficies
+classdef nodoDePeso < superficies
 
 	properties (Access = private)
 		g = 9.81
@@ -14,7 +13,7 @@ classdef nodoDeFuerza < superficies
 	end
 
 	methods
-		function obj = nodoDeFuerza()
+		function obj = nodoDePeso()
 			obj = obj@superficies();
 			obj.plotLoop();
 			obj.TimeSlider.ValueChangingFcn = @(src, event) obj.onSliderChanging(src, event);
@@ -69,19 +68,17 @@ classdef nodoDeFuerza < superficies
 
 	methods (Access = private)
 		function onSliderChanging(obj, ~, event)
-			% live drag: update scene to correspond to current slider value
-			val = event.Value;
-			obj.expandTimelineIfNeeded(val);
-			% Use fast (low-res) updates while dragging for responsiveness
-			obj.updateFromTime(val, true);
+			if obj.isPlaying
+				return; % Evita que el slider pelee con el motor físico en vivo
+			end
+			obj.updateFromTime(event.Value);
 		end
 
-		function onSliderChanged(obj, src, ~)
-			% release/click: update scene
-			val = src.Value;
-			obj.expandTimelineIfNeeded(val);
-			% Use full resolution when finished
-			obj.updateFromTime(val, false);
+		function onSliderChanged(obj, ~, event)
+			if obj.isPlaying
+				return;
+			end
+			obj.updateFromTime(event.Value);
 		end
 
 		function updateFromTime(obj, tVal, fast)
@@ -91,7 +88,6 @@ classdef nodoDeFuerza < superficies
 			if isempty(obj.playbackZFunc)
 				return
 			end
-			% clamp for physics window
 			tClamped = max(0, min(obj.playbackImpactTime, tVal));
 			z0 = obj.playbackZFunc(tClamped);
 			obj.setCylinderPose(z0);

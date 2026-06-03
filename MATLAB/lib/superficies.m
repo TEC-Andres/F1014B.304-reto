@@ -5,10 +5,9 @@ classdef superficies < windowHandler
     
     properties
         cylinder   = struct('rx',1,'ry',1.5,'height',2,'z0',0,'color',[0.149, 0.545, 0.824]); % azul
-        % The torus is now treated as an elongated tube. 'height' defines its length.
         torus      = struct('R',3,'r',0.5,'height',20,'center',[0 0 15],'color',[0.796, 0.294, 0.086]); % naranja
         ground     = struct('radius',5,'z0',0,'color',[0.933, 0.910, 0.835]); % suave crema
-        pilar      = struct('rx',0.5,'ry',0.5,'height',30,'z0',0,'color',[0.676,0.676,0.676]); % gris
+        pilar      = struct('rx',0.5,'ry',0.5,'height',35,'z0',0,'color',[0.676,0.676,0.676]); % gris
         resolution = struct('theta',120,'z',50,'u',120,'v',40); 
         camera     = struct('xlim',[-5 5],'ylim',[-5 5],'zlim',[-1 35]); 
     end

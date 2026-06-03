@@ -1,3 +1,4 @@
+%% nodoDeElectromagnetismo.m
 classdef nodoDeElectromagnetismo < superficies
 	properties (Access = public)
         Bx

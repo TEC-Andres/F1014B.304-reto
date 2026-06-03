@@ -61,3 +61,45 @@ Donde $B$ es el campo magnético, $I$ la corriente eléctrica, $R$ es el radio q
 \inicializarSubseccion{Simulación de MATLAB}
 
 \tab Gracias a estos conceptos podemos entender cómo es que funciona el frenado magnético de una góndola, con esto somos capaces de generar un modelo por medio de MATLAB donde mostramos el funcionamiento de estas leyes aplicadas en nuestra góndola.
+
+\inicializarSubseccion{Momento de dipolo magnético}
+
+\tab El momento de dipolo magnético es un modelo que representa el comportamiento de imán, el cual se describe el momento dipolar magnético, el cual indica la intensidad y dirección del imán.
+
+\begin{equation}
+    \vec{\mu} = -m\hat{\mathbf{k}}
+\end{equation}
+
+\inicializarSubseccion{Campo magnético sobre el eje de una espira circular}
+
+\tab El campo magnético es generado por una espira circular con una corriente puede calcularse sobre el eje de la z, en este caso el campo apunta en la dirección del eje z.
+
+\begin{equation}
+    B_z = \frac{\mu_0 I R^2}{2(R^2 + z^2)^{3/2}}
+\end{equation}
+
+Donde $\mu_0$ es la permeabilidad magnética, $I$ es la corriente eléctrica, $R$ es el radio de la espira y $z$ es la posición del eje de la espira.
+
+\inicializarSubseccion{Fuerzas sobre un dipolo magnético}
+
+\tab La fuerza que experimenta un dipolo magnético dentro de un campo magnético no uniforme se calcula con:
+
+\begin{equation}
+    \vec{F} = \nabla (\vec{\mu} \cdot \vec{B})
+\end{equation}
+
+Esta ecuación nos dice que el imán experimenta una fuerza cuando se encuentra en una región donde el campo magnético varía con la posición.
+
+Sustituyendo el momento dipolar y el campo magnético de la espira obtenemos 
+
+\begin{equation}
+    \vec{F} = \frac{6\mu_0 I m R^2}{2(R^2 + z^2)^{5/2}} \hat{\mathbf{z}}
+\end{equation}
+
+Esta nos ayuda en la simulación de MATLAB, ya que la fuerza también puede aproximarse mediante la deriva del campo magnético respecto de la posición:
+
+\begin{equation}
+    \vec{F} = m\frac{dB_z}{dz} \hat{\mathbf{k}}
+\end{equation}
+
+Esta fuerza se suma vectorialmente con la fuerza de gravedad para encontrar la fuerza total que actúa sobre el imán durante el momento en el cual experimenta su caída.
