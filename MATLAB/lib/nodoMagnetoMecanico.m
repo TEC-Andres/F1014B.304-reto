@@ -141,13 +141,6 @@ classdef nodoMagnetoMecanico < superficies
         end
     end
 
-    methods (Access = public)
-        function h = getHistory(obj)
-            % Return a copy of the recorded simulation history
-            h = obj.history;
-        end
-    end
-
     methods (Access = private)
         
         % Slider callback hookups

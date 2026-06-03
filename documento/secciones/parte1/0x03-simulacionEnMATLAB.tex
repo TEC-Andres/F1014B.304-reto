@@ -9,7 +9,7 @@
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{\nat{parte1/diagramaDeFlujo.png}}
-    \caption{Diagrama de flujo de la simulación.}
+    \caption{Diagrama de flujo de la simulación inicial.}
     \label{fig:diagramaDeFlujo}
 \end{figure}
 
@@ -26,13 +26,13 @@
     \begin{minipage}[t]{0.48\textwidth}
         \centering
         \includesvg[width=1\textwidth, inkscapelatex=false]{\nat{parte1/inicial.svg}}
-        \caption{Diagrama de flujo de la simulación.}
+        \caption{Vista inicial de la simulación.}
         \label{fig:inicial}
     \end{minipage}\hfill
     \begin{minipage}[t]{0.48\textwidth}
         \centering
         \includesvg[width=1\textwidth, inkscapelatex=false]{\nat{parte1/vistaTransversal.svg}}
-        \caption{Vista transversal de la simulación.}
+        \caption{Vista sagital de la simulación.}
         \label{fig:vistaTransversal}
     \end{minipage}
 \end{figure}
@@ -54,4 +54,53 @@
     \end{minipage}
 \end{figure}
 
-Estos resultados son precisamente los esperados para la simulación; imitando el resultado experimental que se obtiene por medio de la ley de Ampere. Con esta base, tenemos las herramientas necesarias para poder realizar la simulación de la torre de caída libre con frenado magnético, lo cual se realizará en la siguiente etapa del proyecto.
+Estos resultados son precisamente los esperados para la simulación; imitando el resultado experimental que se obtiene por medio de la ley de Ampere. Con esta base, tenemos las herramientas necesarias para poder realizar la simulación de la torre de caída libre con frenado magnético. En este caso, y utilizando este modelo, podemos atribuir otro diagrama de flujo que conecta este nodo de electromagnetico con un nodo de caida libre; combinandolos en un solo nodo magneto mecánico. Tal y como se muestra en la \autoref{fig:diagramaDeFlujoII}, figura que se muestra a continuación:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{\nat{parte2/diagramaRetoII.png}}
+    \caption{Diagrama de flujo de la simulación de la góndrola.}
+    \label{fig:diagramaDeFlujoII}
+\end{figure}
+
+Con este diagrama, podemos simular el comportamiento de la góndola en caída libre con frenado magnético, utilizando las herramientas y conceptos que se han desarrollado en esta etapa. Esto nos permitirá entender mejor el funcionamiento del sistema de frenado magnético y cómo se puede optimizar para mejorar su rendimiento.
+
+\begin{figure}[H]
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{\nat{parte2/gondrolaInicial.png}}
+        \caption{Vista de la góndola inicial.}
+        \label{fig:gondrolaInicial}
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{\nat{parte2/gondrolaEnDecaimiento.png}}
+        \caption{Vista de la góndola cayendo.}
+        \label{fig:gondrolaEnDecaimiento}
+    \end{minipage}
+\end{figure}
+
+Con base a este modelo, podemos ver que la góndola experimenta una fuerza de frenado magnético que se opone a la fuerza de gravedad, lo que hace que la góndola caiga de manera más lenta. Para ver que tan lenta es, podemos ver las \autoref{fig:force_vs_position}, \autoref{fig:force_vs_time} y \autoref{fig:z_vs_time}, las cuales muestran la fuerza de frenado magnético en función de la posición, la velocidad en función del tiempo y la posición en función del tiempo respectivamente.
+\begin{figure}[H]
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{\nat{parte2/force_vs_position.png}}
+        \caption{Fuerza de frenado magnético en \\ función de la posición.}
+        \label{fig:force_vs_position}
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.38\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{\nat{parte2/force_vs_time.png}}
+        \caption{Fuerza de frenado magnético \\ en función del tiempo.}
+        \label{fig:force_vs_time}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{\nat{parte2/z_vs_time.png}}
+    \caption{Posición de la góndola en función del tiempo.}
+    \label{fig:z_vs_time}
+\end{figure}
+
+Con estos resultados, podemos ver que la góndola cae de manera más lenta debido a la fuerza de frenado magnético, lo que demuestra el funcionamiento del sistema de frenado magnético. Además, podemos ver que la fuerza de frenado magnético aumenta a medida que la góndola se acerca al imán, lo que hace que la góndola caiga aún más lentamente. Este modelo es lo suficiente avanzado como para determinar si es seguro o no el sistema del frenado magnético, ya que nos permite simular el comportamiento de la góndola en diferentes condiciones y ver cómo se comporta el sistema de frenado magnético en cada caso. 
