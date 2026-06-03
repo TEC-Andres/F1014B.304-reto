@@ -26,3 +26,6 @@ __finalResults/
 *.out
 *.run.xml
 *.toc
+
+# DrawioIgnore
+*.bkp
