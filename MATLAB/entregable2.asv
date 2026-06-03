@@ -10,10 +10,10 @@ sup.cylinder.z0 = 30;
 sup.cylinder.color = [0.2 0.6 0.8];
 
 % Torus: outer ring center moved to [0,0,10]
-sup.torus.R = 3.6;
+sup.torus.R = 5;
 sup.torus.r = 0.5;
-sup.torus.center = [0 0 2];
-sup.torus.height = 12;
+sup.torus.center = [0 0 3];
+sup.to
 sup.torus.color = [0.9 0.6 0.2];
 
 % Piso (cuadrado)
