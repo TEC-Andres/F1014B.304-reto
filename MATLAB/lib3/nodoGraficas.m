@@ -29,6 +29,8 @@ classdef nodoGraficas < handle
             obj.plotZvsTime(hist, startZ);
             obj.plotForceVsPosition(hist);
             obj.plotForceVsTime(hist);
+            obj.plotFEMVsPosition(hist);
+            obj.plotCurrentVsPosition(hist);
         end
 
         function plotZvsTime(obj, hist, startZ)
@@ -84,6 +86,42 @@ classdef nodoGraficas < handle
             title('Fuerza total sobre el imán vs Tiempo', 'Color', textColor);
             saveas(f, fullfile(obj.outdir, 'force_vs_time.png'));
             saveas(f, fullfile(obj.outdir, 'force_vs_time.fig'));
+            close(f);
+        end
+
+        function plotFEMVsPosition(obj, hist)
+            z = hist.z;
+            FEM = hist.FEM;
+            bgColor = '#F6F4E8';
+            textColor = '#202020';
+            f = figure('Visible','off', 'Color', bgColor);
+            plot(z, FEM, '-', 'Color', '#FF0000', 'LineWidth', 1.6);
+            ax = gca; ax.Color = bgColor; ax.XColor = textColor; ax.YColor = textColor;
+            grid on;
+            xlabel('Posición del imán z (m)', 'Color', textColor);
+            ylabel('FEM Inducida (V)', 'Color', textColor);
+            title('Evolución de la FEM según la posición del Imán', 'Color', textColor);
+            xline(obj.sim.torus.ring_z(1), '--', 'Color', [0.5 0.5 0.5], 'LineWidth', 1);
+            saveas(f, fullfile(obj.outdir, 'fem_vs_position.png'));
+            saveas(f, fullfile(obj.outdir, 'fem_vs_position.fig'));
+            close(f);
+        end
+
+        function plotCurrentVsPosition(obj, hist)
+            z = hist.z;
+            I = hist.I_ind;
+            bgColor = '#F6F4E8';
+            textColor = '#202020';
+            f = figure('Visible','off', 'Color', bgColor);
+            plot(z, I, '-', 'Color', '#0000FF', 'LineWidth', 1.6);
+            ax = gca; ax.Color = bgColor; ax.XColor = textColor; ax.YColor = textColor;
+            grid on;
+            xlabel('Posición del imán z (m)', 'Color', textColor);
+            ylabel('Corriente Inducida (A)', 'Color', textColor);
+            title('Evolución de la Corriente según la posición del Imán', 'Color', textColor);
+            xline(obj.sim.torus.ring_z(1), '--', 'Color', [0.5 0.5 0.5], 'LineWidth', 1);
+            saveas(f, fullfile(obj.outdir, 'current_vs_position.png'));
+            saveas(f, fullfile(obj.outdir, 'current_vs_position.fig'));
             close(f);
         end
     end

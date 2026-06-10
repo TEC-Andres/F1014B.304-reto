@@ -6,7 +6,7 @@ classdef nodoMagnetoMecanico < superficies
         g = 9.81           
         m = 1200           
         mu_0 = 4*pi*1e-7   
-        mu_dipole = 3e7  
+        mu_dipole = 1.4e7  
         R_res = 1e-4       
         
         hQuiverCyl = []
@@ -15,12 +15,12 @@ classdef nodoMagnetoMecanico < superficies
         isPlaying = false
         
         % Inicializar historial para slider
-        history = struct('t',[], 'z',[], 'v',[], 'a',[], 'jerk',[], 'F_mag',[], 'I_ind',[])
+        history = struct('t',[], 'z',[], 'v',[], 'a',[], 'jerk',[], 'F_mag',[], 'I_ind',[], 'FEM',[])
     end
 
-    methods
-        function I = metodoDeRomberg(~, f, a, b, tol)
-            if nargin < 5
+    methods (Static)
+        function I = metodoDeRomberg(f, a, b, tol)
+            if nargin < 4
                 tol = 1e-6;
             end
             max_iter = 12; 
@@ -45,6 +45,8 @@ classdef nodoMagnetoMecanico < superficies
             end
             I = R(max_iter, max_iter); 
         end
+    end
+    methods(Access = public)
 
         function obj = nodoMagnetoMecanico()
             obj = obj@superficies();
@@ -57,10 +59,6 @@ classdef nodoMagnetoMecanico < superficies
 
         function bindRunButton(obj, callback)
             obj.Button.ButtonPushedFcn = @(~, ~) callback();
-        end
-
-        function bindGraficasButton(obj, callback)
-            obj.GraficasButton.ButtonPushedFcn = @(~, ~) callback();
         end
 
         function hist = getHistory(obj)
@@ -90,7 +88,7 @@ classdef nodoMagnetoMecanico < superficies
             suelo = obj.cylinder.height / 2;
             
             % Liberar memoria
-            obj.history = struct('t',[], 'z',[], 'v',[], 'a',[], 'jerk',[], 'F_mag',[], 'I_ind',[]);
+            obj.history = struct('t',[], 'z',[], 'v',[], 'a',[], 'jerk',[], 'F_mag',[], 'I_ind',[], 'FEM',[]);
     
             try
                 while z > suelo && obj.isPlaying
@@ -121,6 +119,10 @@ classdef nodoMagnetoMecanico < superficies
                         I_ind_total = I_ind_total + (I_const * dz / (dz^2 + a_ring^2)^(5/2)) * ring_h;
                     end
                     
+                    % Calcular FEM inducida usando método de Romberg
+                    femCalc = nodoFEM();
+                    FEM_val = femCalc.calculateFEM(obj.mu_0, obj.mu_dipole, a_ring, z, v, ring_z, ring_h);
+                    
                     % Save state for slider functionality
                     obj.history.t(end+1) = t;
                     obj.history.z(end+1) = z;
@@ -129,6 +131,7 @@ classdef nodoMagnetoMecanico < superficies
                     obj.history.jerk(end+1) = jerk;
                     obj.history.F_mag(end+1) = F_mag;
                     obj.history.I_ind(end+1) = I_ind_total;
+                    obj.history.FEM(end+1) = FEM_val;
                     
                     % Dynamically update the slider
                     obj.TimeSlider.Limits = [0, max(0.01, t)];
@@ -137,7 +140,7 @@ classdef nodoMagnetoMecanico < superficies
                     obj.setCylinderPose(z);
                     obj.plotLoop(true); 
                     obj.renderMagneticFields(z, ring_z, v);
-                    obj.updateInfoLabel(z, v, a, jerk, (obj.m * obj.g), F_mag);
+                    obj.updateInfoLabel(z, v, a, jerk, (obj.m * obj.g), F_mag, FEM_val);
                     
                     drawnow;
                 end
@@ -175,16 +178,20 @@ classdef nodoMagnetoMecanico < superficies
             a = obj.history.a(idx);
             jerk = obj.history.jerk(idx);
             F_mag = obj.history.F_mag(idx);
+            FEM = obj.history.FEM(idx);
             
             obj.setCylinderPose(z);
             obj.plotLoop(true);
             obj.renderMagneticFields(z, obj.torus.ring_z, v);
-            obj.updateInfoLabel(z, v, a, jerk, (obj.m * obj.g), F_mag);
+            obj.updateInfoLabel(z, v, a, jerk, (obj.m * obj.g), F_mag, FEM);
         end
         
         % Leyenda de info
-        function updateInfoLabel(obj, z, v, a, jerk, W, F_mag)
-            str = sprintf('Pos (z) : %8.2f m\nVel (v) : %8.2f m/s\nAcc (a) : %8.2f m/s²\nJerk (j): %8.2f m/s³\nWeight  : %8.2f N\nF_mag   : %8.2f N', z, v, a, jerk, W, F_mag);
+        function updateInfoLabel(obj, z, v, a, jerk, W, F_mag, FEM)
+            if nargin < 8
+                FEM = 0;
+            end
+            str = sprintf('Pos (z) : %8.2f m\nVel (v) : %8.2f m/s\nAcc (a) : %8.2f m/s²\nJerk (j): %8.2f m/s³\nWeight  : %8.2f N\nF_mag   : %8.2f N\nFEM     : %8.4f V', z, v, a, jerk, W, F_mag, FEM);
             obj.InfoLabel.Text = str;
         end
 

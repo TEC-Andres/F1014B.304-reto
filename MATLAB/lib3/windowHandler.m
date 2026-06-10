@@ -14,7 +14,9 @@ classdef windowHandler < matlab.apps.AppBase
         EditField         matlab.ui.control.NumericEditField
         EditFieldLabel    matlab.ui.control.Label
         Button            matlab.ui.control.Button
-        GraficasButton    matlab.ui.control.Button
+
+        % FEMFieldLabel     matlab.ui.control.Label
+        % FEMField          matlab.ui.control.NumericEditField
         UIAxes            matlab.ui.control.UIAxes
         InfoLabel         matlab.ui.control.Label 
     end
@@ -87,8 +89,8 @@ classdef windowHandler < matlab.apps.AppBase
             app.TimeSlider.Limits = [0 3];
             app.TimeSlider.Value = 0;
 
-            grid = uigridlayout(app.ControlPanel, [14, 1]);
-            grid.RowHeight = {'1x', 'fit', 30, 10, 'fit', 30, 10, 'fit', 30, 10, 'fit', 10, 'fit', '1x'};
+            grid = uigridlayout(app.ControlPanel, [13, 1]);
+            grid.RowHeight = {'1x', 'fit', 30, 10, 'fit', 30, 10, 'fit', 30, 10, 'fit', 10, '1x'};
             grid.ColumnWidth = {'1x'};
             grid.Padding = [10 10 10 10];
             grid.BackgroundColor = app.COLOR_BG;
@@ -138,7 +140,7 @@ classdef windowHandler < matlab.apps.AppBase
             app.EditField3.Layout.Column = 1;
             app.EditField3.BackgroundColor = [1 1 1];
             app.EditField3.FontColor = app.COLOR_AXES;
-            app.EditField3.Value = 3e7; % Default dipole
+            app.EditField3.Value = 1.4e7; % Default dipole
             app.EditField3.Limits = [1e7 9e7];
             app.EditField3.ValueChangedFcn = @(src,event) app.clampDipole(src,event);
 
@@ -148,13 +150,6 @@ classdef windowHandler < matlab.apps.AppBase
             app.Button.Text = 'Correr simulación';
             app.Button.BackgroundColor = [0.992, 0.827, 0.384];
             app.Button.FontColor = app.COLOR_AXES;
-
-            app.GraficasButton = uibutton(grid, 'push');
-            app.GraficasButton.Layout.Row = 13;
-            app.GraficasButton.Layout.Column = 1;
-            app.GraficasButton.Text = 'Simular gráficas';
-            app.GraficasButton.BackgroundColor = [0.165, 0.631, 0.596];
-            app.GraficasButton.FontColor = [1 1 1];
 
             app.titleLabel = uilabel(rootGrid);
             app.titleLabel.Layout.Row = 1;
