@@ -13,6 +13,7 @@
 # TeX cache
 *.texbuildcache.json
 output/
+outputs/
 __pycache__/
 __logs__/
 __finalResults/

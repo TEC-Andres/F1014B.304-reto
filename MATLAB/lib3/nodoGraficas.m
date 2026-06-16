@@ -45,10 +45,10 @@ classdef nodoGraficas < handle
             plot(t, z_free, '--', 'Color', '#FF4500', 'LineWidth', 1.2);
             ax = gca; ax.Color = bgColor; ax.XColor = textColor; ax.YColor = textColor;
             grid on;
-            xlabel('Time (s)', 'Color', textColor);
+            xlabel('Tiempo (s)', 'Color', textColor);
             ylabel('z (m)', 'Color', textColor);
             title('Posición z vs Tiempo', 'Color', textColor);
-            lgd = legend('Simulated z','Free fall','Location','best');
+            lgd = legend('z simulada','Caída libre','Location','best');
             lgd.TextColor = textColor; lgd.Color = bgColor; lgd.EdgeColor = textColor;
             saveas(f, fullfile(obj.outdir, 'z_vs_time.png'));
             saveas(f, fullfile(obj.outdir, 'z_vs_time.fig'));
@@ -66,7 +66,7 @@ classdef nodoGraficas < handle
             grid on;
             xlabel('Posición z (m)', 'Color', textColor);
             ylabel('F_{mag} (N)', 'Color', textColor);
-            title('Fuerza total sobre el imán vs Posición', 'Color', textColor);
+            title('Fuerza magnética sobre el imán vs Posición', 'Color', textColor);
             saveas(f, fullfile(obj.outdir, 'force_vs_position.png'));
             saveas(f, fullfile(obj.outdir, 'force_vs_position.fig'));
             close(f);
@@ -83,7 +83,7 @@ classdef nodoGraficas < handle
             grid on;
             xlabel('Tiempo (s)', 'Color', textColor);
             ylabel('F_{mag} (N)', 'Color', textColor);
-            title('Fuerza total sobre el imán vs Tiempo', 'Color', textColor);
+            title('Fuerza magnética sobre el imán vs Tiempo', 'Color', textColor);
             saveas(f, fullfile(obj.outdir, 'force_vs_time.png'));
             saveas(f, fullfile(obj.outdir, 'force_vs_time.fig'));
             close(f);

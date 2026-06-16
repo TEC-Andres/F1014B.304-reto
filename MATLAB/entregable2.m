@@ -31,5 +31,3 @@ sup.bindRunButton(@() sup.runFallEngine(startZ, stepDt));
 
 % Plot loop
 sup.plotLoop();
-
-

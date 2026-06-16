@@ -13,7 +13,7 @@ sup.cylinder.color = [0.2 0.6 0.8];
 sup.torus.R = 4.6;
 sup.torus.r = 0.5;
 sup.torus.ring_h = 0.25;
-sup.torus.ring_z = 12:0.25:14.25; % 2:0.25:4.25
+sup.torus.ring_z = 2:0.25:4.25; % 12:0.25:14.25;
 sup.torus.color = [0.9 0.6 0.2];
 
 % Piso

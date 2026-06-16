@@ -103,3 +103,55 @@ Esta nos ayuda en la simulación de MATLAB, ya que la fuerza también puede apro
 \end{equation}
 
 Esta fuerza se suma vectorialmente con la fuerza de gravedad para encontrar la fuerza total que actúa sobre el imán durante el momento en el cual experimenta su caída.
+
+\inicializarSubseccion{Flujo magnético a través de una espira}
+
+\tab El flujo magnético representa la cantidad de campo magnético que atraviesa el área de una superficie. En el proyecto, el flujo del imán cambia conforme el imán se acerca o se aleja de la espira.
+
+\begin{equation}
+    \Phi_B = \int \vec{B} \cdot d\vec{A}
+\end{equation}
+
+Donde $\Phi_B$ es el flujo magnético, $\vec{B}$ es el campo magnético y $d\vec{A}$ es el diferencial del área.
+
+
+\inicializarSubseccion{Fuerza electromotriz inducida}
+
+\tab La ley de Faraday nos dice que una variación del flujo magnético genera una fuerza electromotriz inducida (FEM).
+
+\begin{equation}
+    \varepsilon = -\frac{d\Phi_B}{dt}
+\end{equation}
+
+Donde $\varepsilon$ es la fuerza electromotriz inducida.
+
+\inicializarSubseccion{Movimiento rectilíneo no uniforme (MRUA)}
+
+\tab Nos ayuda a calcular la posición del dipolo magnético durante la caída para conocer cómo es que va cambiando el flujo magnético con el tiempo.
+
+\begin{equation}
+    z(t) = z_0 + v_0 t + \frac{1}{2} a t^2
+\end{equation}
+
+Donde $z(t)$ es la posición del imán en función del tiempo, $z_0$ es la posición inicial, $v_0$ es la velocidad inicial y $a$ es la aceleración.
+
+\inicializarSubseccion{Regla de la cadena aplicada a una FEM}
+
+\tab Como el flujo magnético depende de la posición del imán y dicha posición va cambiando con el tiempo, se utiliza la regla de la cadena para calcular la FEM inducida.
+
+\begin{equation}
+    \varepsilon = -\frac{d\Phi_B}{dt} = -\frac{d\Phi_B}{dz} \cdot \frac{dz}{dt}
+\end{equation}
+
+Donde $\frac{dz}{dt}$ es la velocidad del imán.
+
+\inicializarSubseccion{Método de Romberg para integración numérica}
+
+\tab Este método de integración numérica nos ayuda a aproximar integrales definidas con mucha precisión a partir de mejoras sucesivas de la regla del trapecio. Optamos por utilizar ya que nos permite hacer mediciones con muchisimo menos error, sin tener que computar muchisimos puntos de la función a integrar, lo cual es de extrema importancia para poder obtener resultados precisos en nuestra simulación.
+
+\begin{equation}
+    I_{j,k}\approx \frac{4^k I_{j+1,k-1} - I_{j,k-1}}{4^k - 1}
+\end{equation}
+
+
+\textbf{NOTA}: Para la realización de este marco teórico se consultaron distintas fuentes, como lo son los videos y materiales proporcionados en el portal de Canvas, así como también libros y artículos relacionados con el tema. Entre las fuentes más importantes se encuentran \cite{griffiths2013introduction} y \cite{hayt2006teoría}, los cuales nos ayudaron a entender mejor el funcionamiento del frenado magnético y los conceptos físicos involucrados en el reto. Además, se consultaron otras fuentes para complementar la información y obtener una visión más completa del tema.
